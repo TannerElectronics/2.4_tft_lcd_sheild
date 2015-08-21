@@ -17,14 +17,24 @@
 #define LCD_RESET A4 // Can alternately just connect to Arduino's reset pin
 
 // Assign human-readable names to some common 16-bit color values:
-#define	BLACK   0x0000
-#define	BLUE    0x001F
-#define	RED     0xF800
-#define	GREEN   0x07E0
-#define CYAN    0x07FF
-#define MAGENTA 0xF81F
-#define YELLOW  0xFFE0
-#define WHITE   0xFFFF
+//#define	BLACK   0x0000
+//#define	BLUE    0x001F
+//#define	RED     0xF800
+//#define	GREEN   0x07E0
+//#define CYAN    0x07FF
+//#define MAGENTA 0xF81F
+//#define YELLOW  0xFFE0
+//#define WHITE   0xFFFF
+
+// Previous defined colors were inverted on the red tft
+#define WHITE     0x0000
+#define YELLOW    0x001F
+#define CYAN      0xF800
+#define MAGENTA   0x07E0
+#define RED       0x07FF
+#define GREEN     0xF81F
+#define BLUE      0xFFE0
+#define BLACK     0xFFFF
 
 Adafruit_TFTLCD tft(LCD_CS, LCD_CD, LCD_WR, LCD_RD, LCD_RESET);
 
@@ -37,13 +47,16 @@ if(identifier == 0x9325) {
   }
   tft.begin(identifier);
   
-    uint8_t rotation=0;
+    uint8_t rotation = 2;
   tft.setRotation(rotation);
   testText();
   
 }
 
 void loop(void) {
+
+/////////////////// commented the demo to focus on color and orientation corrections  ///////////////////
+/////////////////// you can uncomment the entire loop to run the demo                 ///////////////////
 
 //  for(uint8_t rotation=0; rotation<4; rotation++) {
 //    tft.setRotation(rotation);
